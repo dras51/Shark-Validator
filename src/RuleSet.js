@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
-import { Rule, isObject } from './rules';
-import isArray from '../lib/rules/isArray';
+import { Rule, IsObject } from './rules';
+import IsArray from '../lib/rules/isArray';
 
 /**
  * Vaidation error object.
@@ -181,7 +181,7 @@ class RuleSet {
     }
 
     objectOptions.schema = schema;
-    const rules = [new isObject(objectOptions)];
+    const rules = [new IsObject(objectOptions)];
 
     return new RuleSet({ rules, label });
   }
@@ -206,7 +206,7 @@ class RuleSet {
     }
 
     objectOptions.rules = RuleSet.create(rules);
-    const arrayOfRules = [new isArray(objectOptions)];
+    const arrayOfRules = [new IsArray(objectOptions)];
 
     return new RuleSet({ rules: arrayOfRules, label });
   }
@@ -230,7 +230,7 @@ class RuleSet {
     }
 
     objectOptions.rules = RuleSet.object(schema);
-    const arrayOfRules = [new isArray(objectOptions)];
+    const arrayOfRules = [new IsArray(objectOptions)];
 
     return new RuleSet({ rules: arrayOfRules, label });
   }
