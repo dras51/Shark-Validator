@@ -14,5 +14,5 @@ export { default as isAlphaNum } from './isAlphaNum';
 export { default as toLowerCase } from './toLowerCase';
 export { default as toUpperCase } from './toUpperCase';
 export { default as isEmail } from './isEmail';
-export { default as isObject } from './isObject';
-export { default as isArray } from './isArray';
+export { default as IsObject } from './IsObject';
+export { default as IsArray } from './isArray';

@@ -4,7 +4,7 @@ import Validator from '../Validator';
 /**
  * Checks if the value is an object and satisfies the given schema
  */
-export default class isObject extends Rule {
+export default class IsObject extends Rule {
   /**
    * @ignore
    */
@@ -17,13 +17,13 @@ export default class isObject extends Rule {
 
   /**
    * Checks if the value is an object and satisfies the given schema
-   * @param {Object} options Options for `isObject`
+   * @param {Object} options Options for `IsObject`
    * @param {Validator} options.schema Schema for the object
    * @param {String} options.message Custom error message if test fails
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('isObject');
+    super('IsObject');
 
     this.message = undefined;
     this.schema = undefined;
