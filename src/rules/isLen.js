@@ -3,7 +3,7 @@ import Rule from './Rule';
 /**
  * Checks length of string value
  */
-export default class isLen extends Rule {
+export default class IsLen extends Rule {
   /**
    * @ignore
    */
@@ -26,7 +26,7 @@ export default class isLen extends Rule {
 
   /**
    * Checks length of string value
-   * @param {Object} options Options for `isLen`
+   * @param {Object} options Options for `IsLen`
    * @param {Number} options.eq Length should be equal to `eq`
    * @param {Number} options.min Length should be min `min`
    * @param {Number} options.max Length should be max to `max`
@@ -34,7 +34,7 @@ export default class isLen extends Rule {
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('isLen');
+    super('IsLen');
     if (!options || typeof options !== 'object') {
       throw new TypeError('`options` should be an object.');
     }

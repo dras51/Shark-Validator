@@ -3,7 +3,7 @@ import Rule from './Rule';
 /**
  * Checks if the value is a number
  */
-export default class isNumber extends Rule {
+export default class IsNumber extends Rule {
   /**
    * @ignore
    */
@@ -21,14 +21,14 @@ export default class isNumber extends Rule {
 
   /**
    * Checks if the value is a number
-   * @param {Object} options Options for `isNumber`
+   * @param {Object} options Options for `IsNumber`
    * @param {Number} options.min Number should be min to `min`
    * @param {Number} options.max Number should be max to `max`
    * @param {String} options.message Custom error message if test fails
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('isNumber');
+    super('IsNumber');
 
     this.min = undefined;
     this.max = undefined;

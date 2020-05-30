@@ -1,17 +1,17 @@
 const assert = require('assert');
-const { Validator, RuleSet, isNumber } = require('../lib');
+const { Validator, RuleSet, IsNumber } = require('../lib');
 
 const schema = new Validator({
-  id: RuleSet.create([new isNumber()]),
-  age: RuleSet.create([new isNumber()]),
-  yearOfBirth: RuleSet.create([new isNumber()]),
-  monthOfBirth: RuleSet.create([new isNumber({ min: 6 })]),
-  dateOfBirth: RuleSet.create([new isNumber({ max: 31 })]),
-  score: RuleSet.create([new isNumber({ min: 0, max: 10.5 })]),
-  avgScore: RuleSet.create([new isNumber({ min: 0, max: 100.77 })]),
+  id: RuleSet.create([new IsNumber()]),
+  age: RuleSet.create([new IsNumber()]),
+  yearOfBirth: RuleSet.create([new IsNumber()]),
+  monthOfBirth: RuleSet.create([new IsNumber({ min: 6 })]),
+  dateOfBirth: RuleSet.create([new IsNumber({ max: 31 })]),
+  score: RuleSet.create([new IsNumber({ min: 0, max: 10.5 })]),
+  avgScore: RuleSet.create([new IsNumber({ min: 0, max: 100.77 })]),
   maxScore: RuleSet.create(
     [
-      new isNumber({
+      new IsNumber({
         min: 0,
         max: 100.77,
         message: '%name% should be in the range of %min% to %max%',
@@ -22,11 +22,11 @@ const schema = new Validator({
 });
 
 /**
- * @test {isNumber
+ * @test {IsNumber
       assert.equal(errorArray[0].path, 'name');
  *}
  */
-describe('05. isNumber', () => {
+describe('05. IsNumber', () => {
   describe('With error values', () => {
     let result;
     before(() => {
@@ -53,7 +53,7 @@ describe('05. isNumber', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isNumber');
+      assert.equal(errorArray[0].validator, 'IsNumber');
       assert.equal(errorArray[0].value, '201a4');
       assert.equal(errorArray[0].path, 'id');
     });
@@ -63,7 +63,7 @@ describe('05. isNumber', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isNumber');
+      assert.equal(errorArray[0].validator, 'IsNumber');
       assert.equal(errorArray[0].value, '~10');
       assert.equal(errorArray[0].path, 'age');
     });
@@ -73,7 +73,7 @@ describe('05. isNumber', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isNumber');
+      assert.equal(errorArray[0].validator, 'IsNumber');
       assert.equal(errorArray[0].value, '20181.01a');
       assert.equal(errorArray[0].path, 'yearOfBirth');
     });
@@ -83,7 +83,7 @@ describe('05. isNumber', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isNumber');
+      assert.equal(errorArray[0].validator, 'IsNumber');
       assert.equal(errorArray[0].value, '5');
       assert.equal(errorArray[0].path, 'monthOfBirth');
     });
@@ -93,7 +93,7 @@ describe('05. isNumber', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isNumber');
+      assert.equal(errorArray[0].validator, 'IsNumber');
       assert.equal(errorArray[0].value, '55');
       assert.equal(errorArray[0].path, 'dateOfBirth');
     });
@@ -103,7 +103,7 @@ describe('05. isNumber', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isNumber');
+      assert.equal(errorArray[0].validator, 'IsNumber');
       assert.equal(errorArray[0].value, '-10');
       assert.equal(errorArray[0].path, 'score');
     });
@@ -113,7 +113,7 @@ describe('05. isNumber', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isNumber');
+      assert.equal(errorArray[0].validator, 'IsNumber');
       assert.equal(errorArray[0].value, '150');
       assert.equal(errorArray[0].path, 'avgScore');
     });
@@ -123,7 +123,7 @@ describe('05. isNumber', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isNumber');
+      assert.equal(errorArray[0].validator, 'IsNumber');
       assert.equal(errorArray[0].value, '187');
       assert.equal(errorArray[0].error, 'Max Score should be in the range of 0 to 100.77');
       assert.equal(errorArray[0].path, 'maxScore');

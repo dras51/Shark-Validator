@@ -3,7 +3,7 @@ import Rule from './Rule';
 /**
  * Requires the field to be non empty.
  */
-export default class isRequired extends Rule {
+export default class IsRequired extends Rule {
   /**
    * @ignore
    */
@@ -11,13 +11,13 @@ export default class isRequired extends Rule {
 
   /**
    * Requires the field to be non empty.
-   * @param {Object} options Options for `isRequired`
+   * @param {Object} options Options for `IsRequired`
    * @param {String} options.message Custom error message if test fails
    * (check {@link Rule#formatMessage} for more customization details)
    *
    */
   constructor(options) {
-    super('isRequired');
+    super('IsRequired');
 
     this.message = undefined;
     if (options !== undefined && typeof options !== 'object') {

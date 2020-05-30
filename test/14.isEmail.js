@@ -1,19 +1,19 @@
 const assert = require('assert');
-const { Validator, RuleSet, isEmail } = require('../lib');
+const { Validator, RuleSet, IsEmail } = require('../lib');
 
 const schema = new Validator({
-  email1: RuleSet.create([new isEmail()]),
-  email2: RuleSet.create([new isEmail()]),
+  email1: RuleSet.create([new IsEmail()]),
+  email2: RuleSet.create([new IsEmail()]),
   email3: RuleSet.create(
-    [new isEmail({ message: '%name% is not an email.' })],
+    [new IsEmail({ message: '%name% is not an email.' })],
     'Email',
   ),
 });
 
 /**
- * @test {isEmail}
+ * @test {IsEmail}
  */
-describe('14. isEmail', () => {
+describe('14. IsEmail', () => {
   describe('With invalid values', () => {
     let result;
     before(() => {
@@ -35,7 +35,7 @@ describe('14. isEmail', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isEmail');
+      assert.equal(errorArray[0].validator, 'IsEmail');
       assert.equal(errorArray[0].value, 'irshad');
       assert.equal(errorArray[0].path, 'email1');
     });
@@ -45,7 +45,7 @@ describe('14. isEmail', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isEmail');
+      assert.equal(errorArray[0].validator, 'IsEmail');
       assert.equal(errorArray[0].value, 'irshad@');
       assert.equal(errorArray[0].path, 'email2');
     });
@@ -55,7 +55,7 @@ describe('14. isEmail', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isEmail');
+      assert.equal(errorArray[0].validator, 'IsEmail');
       assert.equal(errorArray[0].value, 'irshad@gmail');
       assert.equal(errorArray[0].path, 'email3');
     });
@@ -65,7 +65,7 @@ describe('14. isEmail', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isEmail');
+      assert.equal(errorArray[0].validator, 'IsEmail');
       assert.equal(errorArray[0].error, 'Email is not an email.');
       assert.equal(errorArray[0].path, 'email3');
     });

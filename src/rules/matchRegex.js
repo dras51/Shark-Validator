@@ -3,7 +3,7 @@ import Rule from './Rule';
 /**
  * Checks if the value matches the regular expression.
  */
-export default class matchRegex extends Rule {
+export default class MatchRegex extends Rule {
   /**
    * @ignore
    */
@@ -16,13 +16,13 @@ export default class matchRegex extends Rule {
 
   /**
    * Checks if the value matches the regular expression.
-   * @param {Object} options Options for `matchRegex`
+   * @param {Object} options Options for `MatchRegex`
    * @param {RegExp} options.regex Regex expression
    * @param {String} options.message Custom error message if test fails
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('matchRegex');
+    super('MatchRegex');
 
     this.message = undefined;
 

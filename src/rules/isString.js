@@ -3,7 +3,7 @@ import Rule from './Rule';
 /**
  * Required the field to be a `string`
  */
-export default class isString extends Rule {
+export default class IsString extends Rule {
   /**
    * @ignore
    */
@@ -11,12 +11,12 @@ export default class isString extends Rule {
 
   /**
    * Required the field to be a `string`
-   * @param {Object} options Options for `isString`
+   * @param {Object} options Options for `IsString`
    * @param {String} options.message Custom error message if test fails
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('isString');
+    super('IsString');
 
     this.message = undefined;
     if (options !== undefined && typeof options !== 'object') {
