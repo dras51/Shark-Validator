@@ -1,15 +1,15 @@
 const assert = require('assert');
-const { Validator, RuleSet, toUpperCase } = require('../lib');
+const { Validator, RuleSet, ToUpperCase } = require('../lib');
 
 const schema = new Validator({
-  email: RuleSet.create([new toUpperCase()]),
-  password: RuleSet.create([new toUpperCase()]),
+  email: RuleSet.create([new ToUpperCase()]),
+  password: RuleSet.create([new ToUpperCase()]),
 });
 
 /**
- * @test {toUpperCase}
+ * @test {ToUpperCase}
  */
-describe('13. toUpperCase', () => {
+describe('13. ToUpperCase', () => {
   let values; let
     errors;
   before(() => {

@@ -1,14 +1,14 @@
 const assert = require('assert');
 const {
-  Validator, RuleSet, isString, toLowerCase,
+  Validator, RuleSet, IsString, ToLowerCase,
 } = require('../lib');
 
 const addressSchema = new Validator({
-  city: RuleSet.create([new isString(), new toLowerCase()]),
+  city: RuleSet.create([new IsString(), new ToLowerCase()]),
 });
 
 const userSchema = new Validator({
-  name: RuleSet.create([new isString(), new toLowerCase()]),
+  name: RuleSet.create([new IsString(), new ToLowerCase()]),
   address: RuleSet.object(addressSchema, 'Address', {
     message: '%name% must be an object.',
   }),
@@ -19,9 +19,9 @@ const schema = new Validator({
 });
 
 /**
- * @test {isObject}
+ * @test {IsObject}
  */
-describe('15. isObject', () => {
+describe('15. IsObject', () => {
   describe('With invalid values', () => {
     describe('Should return error if not an object.', () => {
       let result;
@@ -42,7 +42,7 @@ describe('15. isObject', () => {
         assert.equal(Array.isArray(errorArray), true);
         assert.equal(errorArray.length, 1);
         assert.equal(typeof errorArray[0], 'object');
-        assert.equal(errorArray[0].validator, 'isObject');
+        assert.equal(errorArray[0].validator, 'IsObject');
         assert.equal(errorArray[0].value, 'Irshad');
         assert.equal(errorArray[0].path, 'user');
       });
@@ -69,11 +69,11 @@ describe('15. isObject', () => {
         assert.equal(typeof errorArray[0], 'object');
         assert.equal(typeof errorArray[1], 'object');
 
-        assert.equal(errorArray[0].validator, 'isString');
+        assert.equal(errorArray[0].validator, 'IsString');
         assert.equal(errorArray[0].value, undefined);
         assert.equal(errorArray[0].path, 'user.name');
 
-        assert.equal(errorArray[1].validator, 'isObject');
+        assert.equal(errorArray[1].validator, 'IsObject');
         assert.equal(errorArray[1].value, undefined);
         assert.equal(errorArray[1].path, 'user.address');
       });
@@ -100,11 +100,11 @@ describe('15. isObject', () => {
         assert.equal(typeof errorArray[0], 'object');
         assert.equal(typeof errorArray[1], 'object');
 
-        assert.equal(errorArray[0].validator, 'isString');
+        assert.equal(errorArray[0].validator, 'IsString');
         assert.equal(errorArray[0].value, 21);
         assert.equal(errorArray[0].path, 'user.name');
 
-        assert.equal(errorArray[1].validator, 'isObject');
+        assert.equal(errorArray[1].validator, 'IsObject');
         assert.equal(errorArray[1].value, 1);
         assert.equal(errorArray[1].path, 'user.address');
       });
@@ -134,7 +134,7 @@ describe('15. isObject', () => {
         assert.equal(Array.isArray(errorArray), true);
         assert.equal(errorArray.length, 1);
         assert.equal(typeof errorArray[0], 'object');
-        assert.equal(errorArray[0].validator, 'isString');
+        assert.equal(errorArray[0].validator, 'IsString');
         assert.equal(errorArray[0].value, 2);
         assert.equal(errorArray[0].path, 'user.address.city');
       });

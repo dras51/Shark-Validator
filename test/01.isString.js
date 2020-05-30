@@ -1,21 +1,21 @@
 const assert = require('assert');
-const { Validator, RuleSet, isString } = require('../lib');
+const { Validator, RuleSet, IsString } = require('../lib');
 
 const schema = new Validator({
-  name: RuleSet.create([new isString()]),
-  username: RuleSet.create([new isString()]),
-  email: RuleSet.create([new isString()]),
-  password: RuleSet.create([new isString()]),
+  name: RuleSet.create([new IsString()]),
+  username: RuleSet.create([new IsString()]),
+  email: RuleSet.create([new IsString()]),
+  password: RuleSet.create([new IsString()]),
   confirmPassword: RuleSet.create(
-    [new isString({ message: '%name% should be a string.' })],
+    [new IsString({ message: '%name% should be a string.' })],
     'Confirm password',
   ),
 });
 
 /**
- * @test {isString}
+ * @test {IsString}
  */
-describe('01. isString', () => {
+describe('01. IsString', () => {
   describe('With null, undefined, object and array', () => {
     let result;
     before(() => {
@@ -39,7 +39,7 @@ describe('01. isString', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isString');
+      assert.equal(errorArray[0].validator, 'IsString');
       assert.equal(errorArray[0].value, null);
       assert.equal(errorArray[0].path, 'name');
     });
@@ -49,7 +49,7 @@ describe('01. isString', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isString');
+      assert.equal(errorArray[0].validator, 'IsString');
       assert.equal(errorArray[0].value, undefined);
       assert.equal(errorArray[0].path, 'username');
     });
@@ -59,7 +59,7 @@ describe('01. isString', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isString');
+      assert.equal(errorArray[0].validator, 'IsString');
       assert.deepEqual(errorArray[0].value, {});
       assert.equal(errorArray[0].path, 'email');
     });
@@ -69,7 +69,7 @@ describe('01. isString', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isString');
+      assert.equal(errorArray[0].validator, 'IsString');
       assert.deepEqual(errorArray[0].value, []);
       assert.equal(errorArray[0].path, 'password');
     });
@@ -79,7 +79,7 @@ describe('01. isString', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isString');
+      assert.equal(errorArray[0].validator, 'IsString');
       assert.equal(errorArray[0].value, null);
       assert.equal(errorArray[0].error, 'Confirm password should be a string.');
       assert.equal(errorArray[0].path, 'confirmPassword');

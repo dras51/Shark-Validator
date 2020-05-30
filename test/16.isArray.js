@@ -2,20 +2,20 @@ const assert = require('assert');
 const {
   Validator,
   RuleSet,
-  isString,
-  toLowerCase,
-  isRequired,
-  isEmail,
+  IsString,
+  ToLowerCase,
+  IsRequired,
+  IsEmail,
 } = require('../lib');
 
 const userSchema = new Validator(
   {
-    name: RuleSet.create([new isRequired(), new isString(), new toLowerCase()]),
+    name: RuleSet.create([new IsRequired(), new IsString(), new ToLowerCase()]),
     email: RuleSet.create([
-      new isRequired(),
-      new isString(),
-      new isEmail(),
-      new toLowerCase(),
+      new IsRequired(),
+      new IsString(),
+      new IsEmail(),
+      new ToLowerCase(),
     ]),
   },
   { returnRuleSetEarly: true },
@@ -27,7 +27,7 @@ const schema = new Validator({
 
 const plainArraySchema = new Validator({
   users: RuleSet.array(
-    [new isRequired(), new isString(), new toLowerCase()],
+    [new IsRequired(), new IsString(), new ToLowerCase()],
     null,
     {
       min: 1,
@@ -37,9 +37,9 @@ const plainArraySchema = new Validator({
 });
 
 /**
- * @test {isArray}
+ * @test {IsArray}
  */
-describe('16. isArray', () => {
+describe('16. IsArray', () => {
   describe('With invalid values', () => {
     describe('Should return error if not an array.', () => {
       let result1;
@@ -69,7 +69,7 @@ describe('16. isArray', () => {
         assert.equal(Array.isArray(errorArray), true);
         assert.equal(errorArray.length, 1);
         assert.equal(typeof errorArray[0], 'object');
-        assert.equal(errorArray[0].validator, 'isArray');
+        assert.equal(errorArray[0].validator, 'IsArray');
         assert.equal(errorArray[0].value, 'Irshad');
         assert.equal(errorArray[0].path, 'users');
 
@@ -77,7 +77,7 @@ describe('16. isArray', () => {
         assert.equal(Array.isArray(errorArray), true);
         assert.equal(errorArray.length, 1);
         assert.equal(typeof errorArray[0], 'object');
-        assert.equal(errorArray[0].validator, 'isArray');
+        assert.equal(errorArray[0].validator, 'IsArray');
         assert.equal(errorArray[0].value, 'Irshad');
         assert.equal(errorArray[0].path, 'users');
       });
@@ -111,7 +111,7 @@ describe('16. isArray', () => {
         assert.equal(Array.isArray(errorArray), true);
         assert.equal(errorArray.length, 1);
         assert.equal(typeof errorArray[0], 'object');
-        assert.equal(errorArray[0].validator, 'isArray');
+        assert.equal(errorArray[0].validator, 'IsArray');
         assert.deepStrictEqual(errorArray[0].value, []);
         assert.equal(errorArray[0].path, 'users');
 
@@ -119,7 +119,7 @@ describe('16. isArray', () => {
         assert.equal(Array.isArray(errorArray), true);
         assert.equal(errorArray.length, 1);
         assert.equal(typeof errorArray[0], 'object');
-        assert.equal(errorArray[0].validator, 'isArray');
+        assert.equal(errorArray[0].validator, 'IsArray');
         assert.deepStrictEqual(errorArray[0].value, []);
         assert.equal(errorArray[0].path, 'users');
       });
@@ -153,7 +153,7 @@ describe('16. isArray', () => {
         assert.equal(Array.isArray(errorArray), true);
         assert.equal(errorArray.length, 1);
         assert.equal(typeof errorArray[0], 'object');
-        assert.equal(errorArray[0].validator, 'isArray');
+        assert.equal(errorArray[0].validator, 'IsArray');
         assert.deepStrictEqual(errorArray[0].value, [{}, {}, {}, {}, {}]);
         assert.equal(errorArray[0].path, 'users');
 
@@ -161,7 +161,7 @@ describe('16. isArray', () => {
         assert.equal(Array.isArray(errorArray), true);
         assert.equal(errorArray.length, 1);
         assert.equal(typeof errorArray[0], 'object');
-        assert.equal(errorArray[0].validator, 'isArray');
+        assert.equal(errorArray[0].validator, 'IsArray');
         assert.deepStrictEqual(errorArray[0].value, [{}, {}, {}, {}, {}]);
         assert.equal(errorArray[0].path, 'users');
       });
@@ -201,11 +201,11 @@ describe('16. isArray', () => {
         assert.equal(typeof errorArray[0], 'object');
         assert.equal(typeof errorArray[1], 'object');
 
-        assert.equal(errorArray[0].validator, 'isRequired');
+        assert.equal(errorArray[0].validator, 'IsRequired');
         assert.equal(errorArray[0].value, '');
         assert.equal(errorArray[0].path, 'users[1].name');
 
-        assert.equal(errorArray[1].validator, 'isEmail');
+        assert.equal(errorArray[1].validator, 'IsEmail');
         assert.equal(errorArray[1].value, 'gmail.com');
         assert.equal(errorArray[1].path, 'users[2].email');
 
@@ -215,11 +215,11 @@ describe('16. isArray', () => {
         assert.equal(typeof errorArray[0], 'object');
         assert.equal(typeof errorArray[1], 'object');
 
-        assert.equal(errorArray[0].validator, 'isRequired');
+        assert.equal(errorArray[0].validator, 'IsRequired');
         assert.equal(errorArray[0].value, '');
         assert.equal(errorArray[0].path, 'users[1]');
 
-        assert.equal(errorArray[1].validator, 'isString');
+        assert.equal(errorArray[1].validator, 'IsString');
         assert.deepEqual(errorArray[1].value, []);
         assert.equal(errorArray[1].path, 'users[2]');
       });

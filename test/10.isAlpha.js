@@ -1,20 +1,20 @@
 const assert = require('assert');
-const { Validator, RuleSet, isAlpha } = require('../lib');
+const { Validator, RuleSet, IsAlpha } = require('../lib');
 
 const schema = new Validator({
-  name: RuleSet.create([new isAlpha()]),
-  email: RuleSet.create([new isAlpha()]),
-  password: RuleSet.create([new isAlpha({ allowSpaces: true })]),
+  name: RuleSet.create([new IsAlpha()]),
+  email: RuleSet.create([new IsAlpha()]),
+  password: RuleSet.create([new IsAlpha({ allowSpaces: true })]),
   confirmPassword: RuleSet.create(
-    [new isAlpha({ message: '%name% should only be alphabets.' })],
+    [new IsAlpha({ message: '%name% should only be alphabets.' })],
     'Confirm password',
   ),
 });
 
 /**
- * @test {isAlpha}
+ * @test {IsAlpha}
  */
-describe('10. isAlpha', () => {
+describe('10. IsAlpha', () => {
   describe('With invalid values', () => {
     let result;
     before(() => {
@@ -37,7 +37,7 @@ describe('10. isAlpha', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isAlpha');
+      assert.equal(errorArray[0].validator, 'IsAlpha');
       assert.equal(errorArray[0].value, 'asd#!');
       assert.equal(errorArray[0].path, 'name');
     });
@@ -47,7 +47,7 @@ describe('10. isAlpha', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isAlpha');
+      assert.equal(errorArray[0].validator, 'IsAlpha');
       assert.equal(errorArray[0].value, 'ahsdg jasdg j!hasgd');
       assert.equal(errorArray[0].path, 'email');
     });
@@ -57,7 +57,7 @@ describe('10. isAlpha', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isAlpha');
+      assert.equal(errorArray[0].validator, 'IsAlpha');
       assert.equal(errorArray[0].value, 'kasjdhkaq212jsdh');
       assert.equal(errorArray[0].path, 'password');
     });
@@ -67,7 +67,7 @@ describe('10. isAlpha', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isAlpha');
+      assert.equal(errorArray[0].validator, 'IsAlpha');
       assert.equal(errorArray[0].value, 'asd@!');
       assert.equal(
         errorArray[0].error,

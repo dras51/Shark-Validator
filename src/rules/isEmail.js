@@ -3,7 +3,7 @@ import Rule from './Rule';
 /**
  * Checks if the value is a valid email address.
  */
-export default class isEmail extends Rule {
+export default class IsEmail extends Rule {
   /**
    * @ignore
    */
@@ -16,12 +16,12 @@ export default class isEmail extends Rule {
 
   /**
    * Checks if the value is a valid email address.
-   * @param {Object} options Options for `isEmail`
+   * @param {Object} options Options for `IsEmail`
    * @param {String} options.message Custom error message if test fails
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('isEmail');
+    super('IsEmail');
     this.message = undefined;
 
     if (options !== undefined && typeof options !== 'object') {

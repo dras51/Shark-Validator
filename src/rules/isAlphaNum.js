@@ -3,7 +3,7 @@ import Rule from './Rule';
 /**
  * Checks if the value contains only Alphabets and numbers.
  */
-export default class isAlphaNum extends Rule {
+export default class IsAlphaNum extends Rule {
   /**
    * @ignore
    */
@@ -21,13 +21,13 @@ export default class isAlphaNum extends Rule {
 
   /**
    * Checks if the value contains only Alphabets and numbers.
-   * @param {Object} options Options for `isAlphaNum`
+   * @param {Object} options Options for `IsAlphaNum`
    * @param {Boolean} options.allowSpaces If `true`, it allows spaces
    * @param {String} options.message Custom error message if test fails
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('isAlphaNum');
+    super('IsAlphaNum');
     let allowedString = 'a-z0-9';
     this.message = undefined;
     this.allowSpaces = false;

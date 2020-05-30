@@ -1,20 +1,20 @@
 const assert = require('assert');
-const { Validator, RuleSet, isRequired } = require('../lib');
+const { Validator, RuleSet, IsRequired } = require('../lib');
 
 const schema = new Validator({
-  name: RuleSet.create([new isRequired()]),
-  email: RuleSet.create([new isRequired()]),
-  password: RuleSet.create([new isRequired()]),
+  name: RuleSet.create([new IsRequired()]),
+  email: RuleSet.create([new IsRequired()]),
+  password: RuleSet.create([new IsRequired()]),
   confirmPassword: RuleSet.create(
-    [new isRequired({ message: '%name% is to be present.' })],
+    [new IsRequired({ message: '%name% is to be present.' })],
     'Confirm password',
   ),
 });
 
 /**
- * @test {isRequired}
+ * @test {IsRequired}
  */
-describe('02. isRequired', () => {
+describe('02. IsRequired', () => {
   describe('With null, undefined and empty string', () => {
     let result;
     before(() => {
@@ -36,7 +36,7 @@ describe('02. isRequired', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isRequired');
+      assert.equal(errorArray[0].validator, 'IsRequired');
       assert.equal(errorArray[0].value, null);
       assert.equal(errorArray[0].path, 'name');
     });
@@ -46,7 +46,7 @@ describe('02. isRequired', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isRequired');
+      assert.equal(errorArray[0].validator, 'IsRequired');
       assert.equal(errorArray[0].value, undefined);
       assert.equal(errorArray[0].path, 'email');
     });
@@ -56,7 +56,7 @@ describe('02. isRequired', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isRequired');
+      assert.equal(errorArray[0].validator, 'IsRequired');
       assert.equal(errorArray[0].value, '');
       assert.equal(errorArray[0].path, 'password');
     });
@@ -66,7 +66,7 @@ describe('02. isRequired', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isRequired');
+      assert.equal(errorArray[0].validator, 'IsRequired');
       assert.equal(errorArray[0].value, null);
       assert.equal(errorArray[0].error, 'Confirm password is to be present.');
       assert.equal(errorArray[0].path, 'confirmPassword');

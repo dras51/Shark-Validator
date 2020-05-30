@@ -1,23 +1,23 @@
 const assert = require('assert');
-const { Validator, RuleSet, isLen } = require('../lib');
+const { Validator, RuleSet, IsLen } = require('../lib');
 
 const schema = new Validator({
-  name: RuleSet.create([new isLen({ eq: 5 })]),
-  yearOfBirth: RuleSet.create([new isLen({ eq: 4 })]),
-  username: RuleSet.create([new isLen({ min: 3 })]),
-  email: RuleSet.create([new isLen({ max: 10 })]),
-  password: RuleSet.create([new isLen({ min: 8, max: 10 })]),
-  confirmPassword: RuleSet.create([new isLen({ min: 8, max: 10 })]),
+  name: RuleSet.create([new IsLen({ eq: 5 })]),
+  yearOfBirth: RuleSet.create([new IsLen({ eq: 4 })]),
+  username: RuleSet.create([new IsLen({ min: 3 })]),
+  email: RuleSet.create([new IsLen({ max: 10 })]),
+  password: RuleSet.create([new IsLen({ min: 8, max: 10 })]),
+  confirmPassword: RuleSet.create([new IsLen({ min: 8, max: 10 })]),
   gender: RuleSet.create(
-    [new isLen({ eq: 1, message: '%name% should only have %eq% charecter.' })],
+    [new IsLen({ eq: 1, message: '%name% should only have %eq% charecter.' })],
     'Gender',
   ),
 });
 
 /**
- * @test {isLen}
+ * @test {IsLen}
  */
-describe('03. isLen', () => {
+describe('03. IsLen', () => {
   describe('With error values', () => {
     let result;
     before(() => {
@@ -43,7 +43,7 @@ describe('03. isLen', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isLen');
+      assert.equal(errorArray[0].validator, 'IsLen');
       assert.equal(errorArray[0].value, 'irsh');
       assert.equal(errorArray[0].path, 'name');
     });
@@ -53,7 +53,7 @@ describe('03. isLen', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isLen');
+      assert.equal(errorArray[0].validator, 'IsLen');
       assert.equal(errorArray[0].value, '20181');
       assert.equal(errorArray[0].path, 'yearOfBirth');
     });
@@ -63,7 +63,7 @@ describe('03. isLen', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isLen');
+      assert.equal(errorArray[0].validator, 'IsLen');
       assert.equal(errorArray[0].value, 'ir');
       assert.equal(errorArray[0].path, 'username');
     });
@@ -73,7 +73,7 @@ describe('03. isLen', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isLen');
+      assert.equal(errorArray[0].validator, 'IsLen');
       assert.equal(errorArray[0].value, 'irshad@gmail.com');
       assert.equal(errorArray[0].path, 'email');
     });
@@ -83,7 +83,7 @@ describe('03. isLen', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isLen');
+      assert.equal(errorArray[0].validator, 'IsLen');
       assert.equal(errorArray[0].value, '1234567');
       assert.equal(errorArray[0].path, 'password');
     });
@@ -93,7 +93,7 @@ describe('03. isLen', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isLen');
+      assert.equal(errorArray[0].validator, 'IsLen');
       assert.equal(errorArray[0].value, '12345678910');
       assert.equal(errorArray[0].path, 'confirmPassword');
     });
@@ -103,7 +103,7 @@ describe('03. isLen', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isLen');
+      assert.equal(errorArray[0].validator, 'IsLen');
       assert.equal(errorArray[0].value, 'MALE');
       assert.equal(errorArray[0].error, 'Gender should only have 1 charecter.');
       assert.equal(errorArray[0].path, 'gender');

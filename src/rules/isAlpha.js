@@ -3,7 +3,7 @@ import Rule from './Rule';
 /**
  * Checks if the value contains only Alphabets.
  */
-export default class isAlpha extends Rule {
+export default class IsAlpha extends Rule {
   /**
    * @ignore
    */
@@ -21,13 +21,13 @@ export default class isAlpha extends Rule {
 
   /**
    * Checks if the value contains only Alphabets.
-   * @param {Object} options Options for `isAlpha`
+   * @param {Object} options Options for `IsAlpha`
    * @param {Boolean} options.allowSpaces If `true`, it allows spaces
    * @param {String} options.message Custom error message if test fails
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('isAlpha');
+    super('IsAlpha');
     let allowedString = 'a-z';
     this.message = undefined;
     this.allowSpaces = false;

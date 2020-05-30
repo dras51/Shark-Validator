@@ -1,6 +1,6 @@
 const assert = require('assert');
 const {
-  Validator, RuleSet, isString, isRequired,
+  Validator, RuleSet, IsString, IsRequired,
 } = require('../lib');
 
 /**
@@ -13,8 +13,8 @@ describe('00. Base for all Rules', () => {
     before(() => {
       const schema = new Validator(
         {
-          name: RuleSet.create([new isString(), new isRequired()]),
-          username: RuleSet.create([new isString()]),
+          name: RuleSet.create([new IsString(), new IsRequired()]),
+          username: RuleSet.create([new IsString()]),
         },
         { returnEarly: true },
       );
@@ -35,7 +35,7 @@ describe('00. Base for all Rules', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 2);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isString');
+      assert.equal(errorArray[0].validator, 'IsString');
       assert.equal(errorArray[0].value, null);
       assert.equal(errorArray[0].path, 'name');
     });
@@ -51,8 +51,8 @@ describe('00. Base for all Rules', () => {
     before(() => {
       const schema = new Validator(
         {
-          name: RuleSet.create([new isString(), new isRequired()]),
-          username: RuleSet.create([new isString()]),
+          name: RuleSet.create([new IsString(), new IsRequired()]),
+          username: RuleSet.create([new IsString()]),
         },
         { returnEarly: false },
       );
@@ -74,7 +74,7 @@ describe('00. Base for all Rules', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 2);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isString');
+      assert.equal(errorArray[0].validator, 'IsString');
       assert.equal(errorArray[0].value, null);
       assert.equal(errorArray[0].path, 'name');
     });
@@ -84,7 +84,7 @@ describe('00. Base for all Rules', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isString');
+      assert.equal(errorArray[0].validator, 'IsString');
       assert.equal(errorArray[0].value, undefined);
       assert.equal(errorArray[0].path, 'username');
     });
@@ -95,8 +95,8 @@ describe('00. Base for all Rules', () => {
     before(() => {
       const schema = new Validator(
         {
-          name: RuleSet.create([new isString(), new isRequired()]),
-          username: RuleSet.create([new isString()]),
+          name: RuleSet.create([new IsString(), new IsRequired()]),
+          username: RuleSet.create([new IsString()]),
         },
         { returnEarly: true, returnRuleSetEarly: true },
       );
@@ -118,7 +118,7 @@ describe('00. Base for all Rules', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isString');
+      assert.equal(errorArray[0].validator, 'IsString');
       assert.equal(errorArray[0].value, null);
       assert.equal(errorArray[0].path, 'name');
     });
@@ -134,8 +134,8 @@ describe('00. Base for all Rules', () => {
     before(() => {
       const schema = new Validator(
         {
-          name: RuleSet.create([new isString(), new isRequired()]),
-          username: RuleSet.create([new isString()]),
+          name: RuleSet.create([new IsString(), new IsRequired()]),
+          username: RuleSet.create([new IsString()]),
         },
         { returnEarly: false, returnRuleSetEarly: true },
       );
@@ -157,7 +157,7 @@ describe('00. Base for all Rules', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isString');
+      assert.equal(errorArray[0].validator, 'IsString');
       assert.equal(errorArray[0].value, null);
       assert.equal(errorArray[0].path, 'name');
     });
@@ -167,7 +167,7 @@ describe('00. Base for all Rules', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isString');
+      assert.equal(errorArray[0].validator, 'IsString');
       assert.equal(errorArray[0].value, undefined);
       assert.equal(errorArray[0].path, 'username');
     });

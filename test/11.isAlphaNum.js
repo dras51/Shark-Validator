@@ -1,19 +1,19 @@
 const assert = require('assert');
-const { Validator, RuleSet, isAlphaNum } = require('../lib');
+const { Validator, RuleSet, IsAlphaNum } = require('../lib');
 
 const schema = new Validator({
-  name: RuleSet.create([new isAlphaNum({ allowSpaces: true })]),
-  email: RuleSet.create([new isAlphaNum()]),
+  name: RuleSet.create([new IsAlphaNum({ allowSpaces: true })]),
+  email: RuleSet.create([new IsAlphaNum()]),
   password: RuleSet.create(
-    [new isAlphaNum({ message: '%name% should only be a-z or 0-9.' })],
+    [new IsAlphaNum({ message: '%name% should only be a-z or 0-9.' })],
     'Password',
   ),
 });
 
 /**
- * @test {isAlphaNum}
+ * @test {IsAlphaNum}
  */
-describe('11. isAlphaNum', () => {
+describe('11. IsAlphaNum', () => {
   describe('With invalid values', () => {
     let result;
     before(() => {
@@ -35,7 +35,7 @@ describe('11. isAlphaNum', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isAlphaNum');
+      assert.equal(errorArray[0].validator, 'IsAlphaNum');
       assert.equal(errorArray[0].value, 'as12d#!');
       assert.equal(errorArray[0].path, 'name');
     });
@@ -45,7 +45,7 @@ describe('11. isAlphaNum', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isAlphaNum');
+      assert.equal(errorArray[0].validator, 'IsAlphaNum');
       assert.equal(errorArray[0].value, 'ahsdg jasd2g jhasgd');
       assert.equal(errorArray[0].path, 'email');
     });
@@ -55,7 +55,7 @@ describe('11. isAlphaNum', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isAlphaNum');
+      assert.equal(errorArray[0].validator, 'IsAlphaNum');
       assert.equal(errorArray[0].value, 'kasjdh!kaq212jsdh');
       assert.equal(
         errorArray[0].error,

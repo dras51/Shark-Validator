@@ -1,13 +1,13 @@
 const assert = require('assert');
-const { Validator, RuleSet, toInt } = require('../lib');
+const { Validator, RuleSet, ToInt } = require('../lib');
 
 const schema = new Validator({
-  id: RuleSet.create([new toInt()]),
-  age: RuleSet.create([new toInt()]),
-  yearOfBirth: RuleSet.create([new toInt()]),
+  id: RuleSet.create([new ToInt()]),
+  age: RuleSet.create([new ToInt()]),
+  yearOfBirth: RuleSet.create([new ToInt()]),
   monthOfBirth: RuleSet.create(
     [
-      new toInt({
+      new ToInt({
         message: '%name% should be a number.',
       }),
     ],
@@ -16,9 +16,9 @@ const schema = new Validator({
 });
 
 /**
- * @test {toInt}
+ * @test {ToInt}
  */
-describe('08. toInt', () => {
+describe('08. ToInt', () => {
   describe('With error values', () => {
     let errors;
     before(() => {
@@ -41,7 +41,7 @@ describe('08. toInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'toInt');
+      assert.equal(errorArray[0].validator, 'ToInt');
       assert.equal(errorArray[0].value, '2014.05');
       assert.equal(errorArray[0].path, 'id');
     });
@@ -51,7 +51,7 @@ describe('08. toInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'toInt');
+      assert.equal(errorArray[0].validator, 'ToInt');
       assert.equal(errorArray[0].value, '~10');
       assert.equal(errorArray[0].path, 'age');
     });
@@ -61,7 +61,7 @@ describe('08. toInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'toInt');
+      assert.equal(errorArray[0].validator, 'ToInt');
       assert.equal(errorArray[0].value, '20181.01a');
       assert.equal(errorArray[0].path, 'yearOfBirth');
     });
@@ -71,7 +71,7 @@ describe('08. toInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'toInt');
+      assert.equal(errorArray[0].validator, 'ToInt');
       assert.equal(errorArray[0].value, 'Jan');
       assert.equal(errorArray[0].error, 'Month of birth should be a number.');
       assert.equal(errorArray[0].path, 'monthOfBirth');

@@ -3,12 +3,12 @@ import Rule from './Rule';
 /**
  * Converts the string value to upper case
  */
-export default class toUpperCase extends Rule {
+export default class ToUpperCase extends Rule {
   /**
    * Converts the string value to upper case
    */
   constructor() {
-    super('toUpperCase');
+    super('ToUpperCase');
   }
 
   /**
