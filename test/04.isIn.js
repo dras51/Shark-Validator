@@ -1,20 +1,20 @@
 const assert = require('assert');
-const { Validator, RuleSet, isIn } = require('../lib');
+const { Validator, RuleSet, IsIn } = require('../lib');
 
 const schema = new Validator({
-  name: RuleSet.create([new isIn({ in: ['irshad', 'ansari'] })]),
-  yearOfBirth: RuleSet.create([new isIn({ in: [2018, 2019] })]),
-  username: RuleSet.create([new isIn({ in: ['irshad'] })]),
+  name: RuleSet.create([new IsIn({ in: ['irshad', 'ansari'] })]),
+  yearOfBirth: RuleSet.create([new IsIn({ in: [2018, 2019] })]),
+  username: RuleSet.create([new IsIn({ in: ['irshad'] })]),
   gender: RuleSet.create(
-    [new isIn({ in: ['M', 'F'], message: '%name% can only be %in%.' })],
+    [new IsIn({ in: ['M', 'F'], message: '%name% can only be %in%.' })],
     'Gender',
   ),
 });
 
 /**
- * @test {isIn}
+ * @test {IsIn}
  */
-describe('04. isIn', () => {
+describe('04. IsIn', () => {
   describe('With error values', () => {
     let result;
     before(() => {
@@ -37,7 +37,7 @@ describe('04. isIn', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isIn');
+      assert.equal(errorArray[0].validator, 'IsIn');
       assert.equal(errorArray[0].value, 'irsh');
       assert.equal(errorArray[0].path, 'name');
     });
@@ -47,7 +47,7 @@ describe('04. isIn', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isIn');
+      assert.equal(errorArray[0].validator, 'IsIn');
       assert.equal(errorArray[0].value, '20181');
       assert.equal(errorArray[0].path, 'yearOfBirth');
     });
@@ -57,7 +57,7 @@ describe('04. isIn', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isIn');
+      assert.equal(errorArray[0].validator, 'IsIn');
       assert.equal(errorArray[0].value, 'ir');
       assert.equal(errorArray[0].path, 'username');
     });
@@ -67,7 +67,7 @@ describe('04. isIn', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isIn');
+      assert.equal(errorArray[0].validator, 'IsIn');
       assert.equal(errorArray[0].value, 'MALE');
       assert.equal(errorArray[0].error, 'Gender can only be M, F.');
       assert.equal(errorArray[0].path, 'gender');

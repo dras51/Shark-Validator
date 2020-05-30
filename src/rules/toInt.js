@@ -3,7 +3,7 @@ import Rule from './Rule';
 /**
  * Converts the value to an integer and throws error if it cannot be converted
  */
-export default class toInt extends Rule {
+export default class ToInt extends Rule {
   /**
    * @ignore
    */
@@ -11,12 +11,12 @@ export default class toInt extends Rule {
 
   /**
    * Converts the value to an integer and throws error if it cannot be converted
-   * @param {Object} options Options for `toInt`
+   * @param {Object} options Options for `ToInt`
    * @param {String} options.message Custom error message if test fails
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('toInt');
+    super('ToInt');
 
     this.message = undefined;
     if (options !== undefined && typeof options !== 'object') {

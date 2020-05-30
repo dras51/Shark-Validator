@@ -1,17 +1,17 @@
 const assert = require('assert');
-const { Validator, RuleSet, isInt } = require('../lib');
+const { Validator, RuleSet, IsInt } = require('../lib');
 
 const schema = new Validator({
-  id: RuleSet.create([new isInt()]),
-  age: RuleSet.create([new isInt()]),
-  yearOfBirth: RuleSet.create([new isInt()]),
-  monthOfBirth: RuleSet.create([new isInt({ min: 6 })]),
-  dateOfBirth: RuleSet.create([new isInt({ max: 31 })]),
-  score: RuleSet.create([new isInt({ min: 0, max: 10 })]),
-  avgScore: RuleSet.create([new isInt({ min: 0, max: 100 })]),
+  id: RuleSet.create([new IsInt()]),
+  age: RuleSet.create([new IsInt()]),
+  yearOfBirth: RuleSet.create([new IsInt()]),
+  monthOfBirth: RuleSet.create([new IsInt({ min: 6 })]),
+  dateOfBirth: RuleSet.create([new IsInt({ max: 31 })]),
+  score: RuleSet.create([new IsInt({ min: 0, max: 10 })]),
+  avgScore: RuleSet.create([new IsInt({ min: 0, max: 100 })]),
   maxScore: RuleSet.create(
     [
-      new isInt({
+      new IsInt({
         min: 0,
         max: 100,
         message: '%name% should be in the range of %min% to %max%',
@@ -22,9 +22,9 @@ const schema = new Validator({
 });
 
 /**
- * @test {isInt}
+ * @test {IsInt}
  */
-describe('07. isInt', () => {
+describe('07. IsInt', () => {
   describe('With error values', () => {
     let result;
     before(() => {
@@ -51,7 +51,7 @@ describe('07. isInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isInt');
+      assert.equal(errorArray[0].validator, 'IsInt');
       assert.equal(errorArray[0].value, '2014.05');
       assert.equal(errorArray[0].path, 'id');
     });
@@ -61,7 +61,7 @@ describe('07. isInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isInt');
+      assert.equal(errorArray[0].validator, 'IsInt');
       assert.equal(errorArray[0].value, '~10');
       assert.equal(errorArray[0].path, 'age');
     });
@@ -71,7 +71,7 @@ describe('07. isInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isInt');
+      assert.equal(errorArray[0].validator, 'IsInt');
       assert.equal(errorArray[0].value, '20181.01a');
       assert.equal(errorArray[0].path, 'yearOfBirth');
     });
@@ -81,7 +81,7 @@ describe('07. isInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isInt');
+      assert.equal(errorArray[0].validator, 'IsInt');
       assert.equal(errorArray[0].value, '5');
       assert.equal(errorArray[0].path, 'monthOfBirth');
     });
@@ -91,7 +91,7 @@ describe('07. isInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isInt');
+      assert.equal(errorArray[0].validator, 'IsInt');
       assert.equal(errorArray[0].value, '55');
       assert.equal(errorArray[0].path, 'dateOfBirth');
     });
@@ -101,7 +101,7 @@ describe('07. isInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isInt');
+      assert.equal(errorArray[0].validator, 'IsInt');
       assert.equal(errorArray[0].value, '-10');
       assert.equal(errorArray[0].path, 'score');
     });
@@ -111,7 +111,7 @@ describe('07. isInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isInt');
+      assert.equal(errorArray[0].validator, 'IsInt');
       assert.equal(errorArray[0].value, '150');
       assert.equal(errorArray[0].path, 'avgScore');
     });
@@ -121,7 +121,7 @@ describe('07. isInt', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'isInt');
+      assert.equal(errorArray[0].validator, 'IsInt');
       assert.equal(errorArray[0].value, '187');
       assert.equal(
         errorArray[0].error,

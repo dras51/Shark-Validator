@@ -3,7 +3,7 @@ import Rule from './Rule';
 /**
  * Checks if the value is in the given array (works for number and strings) (is type sensitive)
  */
-export default class isIn extends Rule {
+export default class IsIn extends Rule {
   /**
    * @ignore
    */
@@ -16,13 +16,13 @@ export default class isIn extends Rule {
 
   /**
    * Checks if the value is in the given array (works for number and strings) (is type sensitive)
-   * @param {Object} options Options for `isIn`
+   * @param {Object} options Options for `IsIn`
    * @param {Array} options.in Array containing possible values
    * @param {String} options.message Custom error message if test fails
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('isIn');
+    super('IsIn');
     if (!options || typeof options !== 'object') {
       throw new TypeError('`options` should be an object.');
     }

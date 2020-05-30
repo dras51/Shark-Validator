@@ -4,7 +4,7 @@ import RuleSet from '../RuleSet';
 /**
  * Checks if value is an array and each value satisfies the given rules
  */
-export default class isArray extends Rule {
+export default class IsArray extends Rule {
   /**
    * @ignore
    */
@@ -32,7 +32,7 @@ export default class isArray extends Rule {
 
   /**
    * Checks if value is an array and each value satisfies the given rules
-   * @param {Object} options Options for `isArray`
+   * @param {Object} options Options for `IsArray`
    * @param {RuleSet} options.rules RuleSet for validating array value
    * @param {Number} options.eq Length should be equal to `eq`
    * @param {Number} options.min Length should be min `min`
@@ -41,7 +41,7 @@ export default class isArray extends Rule {
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('isArray');
+    super('IsArray');
 
     this.message = undefined;
     this.rules = undefined;

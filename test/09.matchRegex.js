@@ -1,11 +1,11 @@
 const assert = require('assert');
-const { Validator, RuleSet, matchRegex } = require('../lib');
+const { Validator, RuleSet, MatchRegex } = require('../lib');
 
 const schema = new Validator({
-  email: RuleSet.create([new matchRegex({ regex: new RegExp('^[a-zA-Z]*$') })]),
+  email: RuleSet.create([new MatchRegex({ regex: new RegExp('^[a-zA-Z]*$') })]),
   password: RuleSet.create(
     [
-      new matchRegex({
+      new MatchRegex({
         message: '%name% should only contain alphabets.',
         regex: new RegExp('^[a-zA-Z]*$'),
       }),
@@ -15,9 +15,9 @@ const schema = new Validator({
 });
 
 /**
- * @test {matchRegex}
+ * @test {MatchRegex}
  */
-describe('09. matchRegex', () => {
+describe('09. MatchRegex', () => {
   describe('With error values', () => {
     let result;
     before(() => {
@@ -38,7 +38,7 @@ describe('09. matchRegex', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'matchRegex');
+      assert.equal(errorArray[0].validator, 'MatchRegex');
       assert.equal(errorArray[0].value, 'Asdk!#sa');
       assert.equal(errorArray[0].path, 'email');
     });
@@ -48,7 +48,7 @@ describe('09. matchRegex', () => {
       assert.equal(Array.isArray(errorArray), true);
       assert.equal(errorArray.length, 1);
       assert.equal(typeof errorArray[0], 'object');
-      assert.equal(errorArray[0].validator, 'matchRegex');
+      assert.equal(errorArray[0].validator, 'MatchRegex');
       assert.equal(errorArray[0].value, 'asD.asd.');
       assert.equal(
         errorArray[0].error,

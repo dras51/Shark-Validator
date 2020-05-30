@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { Rule, IsObject } from './rules';
-import IsArray from '../lib/rules/isArray';
+import IsArray from './rules/IsArray';
 
 /**
  * Vaidation error object.

@@ -3,7 +3,7 @@ import Rule from './Rule';
 /**
  * Converts the value to Number and throws error if it cannot be converted
  */
-export default class toNumber extends Rule {
+export default class ToNumber extends Rule {
   /**
    * @ignore
    */
@@ -16,7 +16,7 @@ export default class toNumber extends Rule {
    * (check {@link Rule#formatMessage} for more customization details)
    */
   constructor(options) {
-    super('toNumber');
+    super('ToNumber');
 
     this.message = undefined;
     if (options !== undefined && typeof options !== 'object') {

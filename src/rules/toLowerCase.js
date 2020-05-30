@@ -3,12 +3,12 @@ import Rule from './Rule';
 /**
  * Converts the string value to lower case
  */
-export default class toLowerCase extends Rule {
+export default class ToLowerCase extends Rule {
   /**
    * Converts the string value to lower case
    */
   constructor() {
-    super('toLowerCase');
+    super('ToLowerCase');
   }
 
   /**
