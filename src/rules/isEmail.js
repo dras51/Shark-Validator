@@ -1,9 +1,11 @@
 import Rule from './Rule';
 
 /**
+ * @description
  * Checks if the value is a valid email address.
  */
-export default class IsEmail extends Rule {
+
+class IsEmail extends Rule {
   /**
    * @ignore
    */
@@ -15,8 +17,10 @@ export default class IsEmail extends Rule {
   regex;
 
   /**
+   * @description
    * Checks if the value is a valid email address.
-   * @param {Object} options Options for `IsEmail`
+   *
+   * @param {Object} options Options for `isEmail`
    * @param {String} options.message Custom error message if test fails
    * (check {@link Rule#formatMessage} for more customization details)
    */
@@ -43,8 +47,10 @@ export default class IsEmail extends Rule {
   }
 
   /**
+   * @description
    * Validate the `value` and return the error `string` if there are any
    * otherwise return `null`.
+   *
    * @param {any} value The value to be checked.
    * @param {Object} options Options for validate.
    * @param {String} options.label Name or Label of the value being checked.
@@ -78,4 +84,16 @@ export default class IsEmail extends Rule {
     }
     return { value, error: null };
   }
+}
+
+/**
+ * @description
+ * Checks if the value is a valid email address.
+ *
+ * @param {Object} options Options for `isEmail`
+ * @param {String} options.message Custom error message if test fails
+ * (check {@link Rule#formatMessage} for more customization details)
+ */
+export default function isEmail(options) {
+  return new IsEmail(options);
 }

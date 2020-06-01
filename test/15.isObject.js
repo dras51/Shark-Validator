@@ -1,14 +1,15 @@
 const assert = require('assert');
 const {
-  Validator, RuleSet, IsString, ToLowerCase,
+  Validator, RuleSet, isString, toLowerCase,
 } = require('../lib');
 
 const addressSchema = new Validator({
-  city: RuleSet.create([new IsString(), new ToLowerCase()]),
+
+  city: RuleSet.create([isString(), toLowerCase()]),
 });
 
 const userSchema = new Validator({
-  name: RuleSet.create([new IsString(), new ToLowerCase()]),
+  name: RuleSet.create([isString(), toLowerCase()]),
   address: RuleSet.object(addressSchema, 'Address', {
     message: '%name% must be an object.',
   }),
@@ -142,8 +143,8 @@ describe('15. IsObject', () => {
   });
 
   describe('With valid values', () => {
-    let errors; let
-      values;
+    let errors;
+    let values;
     before(() => {
       const data = schema.validate({
         user: { name: 'IRSHAD', address: { city: 'Bangalore' } },

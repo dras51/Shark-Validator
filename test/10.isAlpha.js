@@ -1,12 +1,13 @@
 const assert = require('assert');
-const { Validator, RuleSet, IsAlpha } = require('../lib');
+const { Validator, RuleSet, isAlpha } = require('../lib');
 
 const schema = new Validator({
-  name: RuleSet.create([new IsAlpha()]),
-  email: RuleSet.create([new IsAlpha()]),
-  password: RuleSet.create([new IsAlpha({ allowSpaces: true })]),
+
+  name: RuleSet.create([isAlpha()]),
+  email: RuleSet.create([isAlpha()]),
+  password: RuleSet.create([isAlpha({ allowSpaces: true })]),
   confirmPassword: RuleSet.create(
-    [new IsAlpha({ message: '%name% should only be alphabets.' })],
+    [isAlpha({ message: '%name% should only be alphabets.' })],
     'Confirm password',
   ),
 });

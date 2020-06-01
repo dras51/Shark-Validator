@@ -1,11 +1,12 @@
 const assert = require('assert');
-const { Validator, RuleSet, IsAlphaNum } = require('../lib');
+const { Validator, RuleSet, isAlphaNum } = require('../lib');
 
 const schema = new Validator({
-  name: RuleSet.create([new IsAlphaNum({ allowSpaces: true })]),
-  email: RuleSet.create([new IsAlphaNum()]),
+
+  name: RuleSet.create([isAlphaNum({ allowSpaces: true })]),
+  email: RuleSet.create([isAlphaNum()]),
   password: RuleSet.create(
-    [new IsAlphaNum({ message: '%name% should only be a-z or 0-9.' })],
+    [isAlphaNum({ message: '%name% should only be a-z or 0-9.' })],
     'Password',
   ),
 });

@@ -1,9 +1,12 @@
 /* eslint-disable import/no-cycle */
-import { Rule, IsObject } from './rules';
-import IsArray from './rules/isArray';
+
+import { Rule, isObject } from './rules';
+import isArray from './rules/isArray';
 
 /**
+ * @description
  * Vaidation error object.
+ *
  * @typedef {Object} validationError
  * @property {String} error - Error string
  * @property {String} validator - Name of validator (`Rule`) where the error occured
@@ -28,7 +31,9 @@ class RuleSet {
   __label;
 
   /**
+   * @description
    * Create a ruleset for a particular `key` or `value`.
+   *
    * @param {Object} options Options for `RuleSet`.
    * @param {Array<Rule>} options.rules Array of `Rule` object
    * (should not be set if the key is an obejct)
@@ -57,6 +62,7 @@ class RuleSet {
   }
 
   /**
+   * @description
    * Validates the `value` and returns an array of errors if any,
    * othewise returns `null`.
    *
@@ -154,8 +160,10 @@ class RuleSet {
   }
 
   /**
+   * @description
    * Create a ruleset for a particular `key` or `value`.
    * Can be used as an alternative to the constructor.
+   *
    * @param {Array<Rule>} rules Array of `Rule` object
    * @param {String} label The name or label of the value being checked
    * @returns {RuleSet} A new `RuleSet` object
@@ -165,8 +173,10 @@ class RuleSet {
   }
 
   /**
-   * Create a ruleset for a particular `key` or `value` if it is supposed to be an object.
-   * Can be used as an alternative to the constructor.
+   * @description
+   * Create a ruleset for a particular `key` or `value` if it is supposed
+   * to be an object. Can be used as an alternative to the constructor.
+   *
    * @param {Validator} schema A `Validator` object to be checked against the object
    * @param {String} label The name or label of the value being checked
    * @param {Object} schemaOptions Options for `isObject`
@@ -181,14 +191,17 @@ class RuleSet {
     }
 
     objectOptions.schema = schema;
-    const rules = [new IsObject(objectOptions)];
+    const rules = [isObject(objectOptions)];
+
 
     return new RuleSet({ rules, label });
   }
 
   /**
-   * Create a ruleset for a particular `key` or `value` if it is supposed to be an object.
-   * Can be used as an alternative to the constructor.
+   * @description
+   * Create a ruleset for a particular `key` or `value` if it is supposed
+   * to be an object. Can be used as an alternative to the constructor.
+   *
    * @param {Array<Rule>} rules Array of rules
    * @param {String} label The name or label of the value being checked
    * @param {Object} schemaOptions Options for `isArray`
@@ -206,13 +219,16 @@ class RuleSet {
     }
 
     objectOptions.rules = RuleSet.create(rules);
-    const arrayOfRules = [new IsArray(objectOptions)];
+
+    const arrayOfRules = [isArray(objectOptions)];
 
     return new RuleSet({ rules: arrayOfRules, label });
   }
 
   /**
+   * @description
    * Checks if value is an array and each value satisfies the given rules
+   *
    * @param {Validator} schema A `Validator` object to be checked against the object
    * @param {String} label The name or label of the value being checked
    * @param {Object} schemaOptions Options for `isArray`
@@ -230,7 +246,7 @@ class RuleSet {
     }
 
     objectOptions.rules = RuleSet.object(schema);
-    const arrayOfRules = [new IsArray(objectOptions)];
+    const arrayOfRules = [isArray(objectOptions)];
 
     return new RuleSet({ rules: arrayOfRules, label });
   }

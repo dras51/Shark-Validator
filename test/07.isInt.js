@@ -1,17 +1,17 @@
 const assert = require('assert');
-const { Validator, RuleSet, IsInt } = require('../lib');
+const { Validator, RuleSet, isInt } = require('../lib');
 
 const schema = new Validator({
-  id: RuleSet.create([new IsInt()]),
-  age: RuleSet.create([new IsInt()]),
-  yearOfBirth: RuleSet.create([new IsInt()]),
-  monthOfBirth: RuleSet.create([new IsInt({ min: 6 })]),
-  dateOfBirth: RuleSet.create([new IsInt({ max: 31 })]),
-  score: RuleSet.create([new IsInt({ min: 0, max: 10 })]),
-  avgScore: RuleSet.create([new IsInt({ min: 0, max: 100 })]),
+  id: RuleSet.create([isInt()]),
+  age: RuleSet.create([isInt()]),
+  yearOfBirth: RuleSet.create([isInt()]),
+  monthOfBirth: RuleSet.create([isInt({ min: 6 })]),
+  dateOfBirth: RuleSet.create([isInt({ max: 31 })]),
+  score: RuleSet.create([isInt({ min: 0, max: 10 })]),
+  avgScore: RuleSet.create([isInt({ min: 0, max: 100 })]),
   maxScore: RuleSet.create(
     [
-      new IsInt({
+      isInt({
         min: 0,
         max: 100,
         message: '%name% should be in the range of %min% to %max%',

@@ -2,21 +2,17 @@ const assert = require('assert');
 const {
   Validator,
   RuleSet,
-  IsString,
-  ToLowerCase,
-  IsRequired,
-  IsEmail,
+  isString,
+  toLowerCase,
+  isRequired,
+  isEmail,
 } = require('../lib');
 
 const userSchema = new Validator(
   {
-    name: RuleSet.create([new IsRequired(), new IsString(), new ToLowerCase()]),
-    email: RuleSet.create([
-      new IsRequired(),
-      new IsString(),
-      new IsEmail(),
-      new ToLowerCase(),
-    ]),
+
+    name: RuleSet.create([isRequired(), isString(), toLowerCase()]),
+    email: RuleSet.create([isRequired(), isString(), isEmail(), toLowerCase()]),
   },
   { returnRuleSetEarly: true },
 );
@@ -26,14 +22,11 @@ const schema = new Validator({
 });
 
 const plainArraySchema = new Validator({
-  users: RuleSet.array(
-    [new IsRequired(), new IsString(), new ToLowerCase()],
-    null,
-    {
-      min: 1,
-      max: 3,
-    },
-  ),
+
+  users: RuleSet.array([isRequired(), isString(), toLowerCase()], null, {
+    min: 1,
+    max: 3,
+  }),
 });
 
 /**
